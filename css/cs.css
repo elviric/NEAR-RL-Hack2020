@@ -1,0 +1,84 @@
+@charset "UTF-8";
+.emoji-toggle {
+  position: relative;
+  width: 60px;
+  margin: 30px 40px;
+}
+.emoji-toggle .well {
+  display: block;
+  background: #eee;
+  height: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.emoji-toggle .toggle {
+  opacity: 0;
+  border: 0;
+  outline: none;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  position: absolute;
+  cursor: pointer;
+  z-index: 100;
+}
+.emoji-toggle .toggle ~ .emoji:before {
+  /*content: "\01F431";*/
+  position: absolute;
+  left: 0;
+  top: -5px;
+  font-size: 28px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+.emoji-toggle .toggle:checked ~ .emoji:before {
+  left: 100%;
+  margin-left: -1em;
+}
+.emoji-toggle .toggle ~ label {
+  white-space: nowrap;
+}
+.emoji-toggle .toggle ~ label:before {
+  position: absolute;
+  right: 100%;
+  margin-right: 5px;
+  top: 0;
+}
+.emoji-toggle .toggle ~ label:after {
+  position: absolute;
+  left: 100%;
+  margin-left: 5px;
+  top: 0;
+}
+
+.emoji-happy .toggle ~ .emoji:before {
+  content: "👋";
+}
+.emoji-happy .toggle:checked ~ .emoji:before {
+  content: "🍑";
+}
+.emoji-happy .toggle ~ label:before {
+  content: "OFF";
+}
+.emoji-happy .toggle ~ label:after {
+  content: "AUTO";
+}
+/* Bumble */
+.emoji-bum .toggle ~ .emoji:before {
+  content: "👋";
+  right: 100%;
+  margin-right: 5px;
+  top: -20px;
+}
+.emoji-bum .toggle:checked ~ .emoji:before {
+  content: "🍑";
+  left: 100%;
+  margin-left: 5px;
+  top: -20px;
+}
+.emoji-bum .toggle ~ label:before {
+  content: "OFF";
+}
+.emoji-bum .toggle ~ label:after {
+  content: "AUTO";
+}

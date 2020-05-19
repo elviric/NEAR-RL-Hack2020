@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="popup.css">
+    <title>Flux market</title>
+    <style>
+    </style>
+  </head>
+  <body >
+    <header>
+      <center class="component-status">
+    
+      <div><img id="wId" width="25px" height="25px" style="border-radius:6px;" src="images/icon.png"></div>
+        <!--div class="indicator success"></div-->
+        <div class="label" id="accId">elvi@near</div>
+        <!--div><img id="nId" width="20px" height="20px" style="border-radius:6px;" src="images/xdai.jpg"></div-->
+       </center></header>
+
+       
+    <div id="dashBoard" class="dash">
+     
+    <div id='connectDiv'class="component-status" style="border: none;" >
+    <!--button class="pricing button" > SEND  </button>
+    <button class="pricing button" > RECEIVE  </button-->
+      <button   class="pricing button">  <a id='fluxconnect'style="text-decoration: none;color:white;"  target="_blank" > connect to flux </a></button>
+    </div>
+    <div  id='mkId' class="component-status" style="border: none;justify-content:left; display: none;" >
+
+    </div>
+   
+    <div id='biMarket' class="component" style="margin:5px; display: none;">
+
+      <div class="label white"> Market description:  </div>
+      <textarea id='Md'class="component-status" style="width: 100%; color:#ff848a;" placeholder="Will x happen by this date?"></textarea>
+      <div class="label white"> Extra info:  </div> 
+      <textarea id='Ei' class="component-status" style="width: 100%; color:#ff848a;" placeholder="source, etc.."></textarea>
+      <div class="label white"> Market categories:</div> 
+      <textarea id='Mc' class="component-status" style="width: 100%; color:#ff848a;" placeholder="comma separated: sports,crypto"></textarea>
+      
+      <div class="label white"> End time:</div> 
+      <input id='dt' type="date">
+      <div class="label white"> Market type: Binary</div> 
+      <button id="create"  class="pricing button"> create </button>
+    </div>
+    </div>
+  <div class='component-status' style="display:none;border: none; margin-bottom: 4px;">
+      <a id='dataTinder' data-tinder='' class="pricing button link" style="background:#ff848a;border: 1px solid white; text-decoration: none; font-size: 14px;" target="_blank" href="https://tinder.com">tinder</a>
+      <a id='dataBumble' data-bumble='' class="pricing button link" style="background: #ffc10787;border: 1px solid white; text-decoration: none; font-size: 14px;"target="_blank" href="https://bumble.com/app">bumble</a>
+    </div>
+    <div class="bo" style="background: transparent;">
+      <center style="color:white;">Made with <span style="color:red;">&#x2764;</span> by
+        <a class="topBar" href="https://elvi.network" target="_blank" style="color:#fff; border:none;text-decoration:none;padding:2px; background-image: linear-gradient(to right,rgba(56,94,198,0.4),rgba(56,94,198,0.84));">
+        <img style="width:9px;height:9px;margin-right: 2px;" src="images/elvilogo-200.svg">elvi.network</a></center>
+    </div>
+  </body>
+  <script type='module' src="popup.js"></script>
+</html>

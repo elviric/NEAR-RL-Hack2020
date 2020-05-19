@@ -1,0 +1,58 @@
+{
+  "name": "flux",
+  "short_name": "flux extension",
+  "version": "0.0.0.1",
+  "manifest_version": 2,
+  "author": "https://elvi.network",
+  "description": "Extension to create flux market place.",
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "windows": "Alt+Shift+Z",
+        "mac": "Alt+Shift+Z",
+        "chromeos": "Alt+Shift+Z",
+        "linux": "Alt+Shift+Z"
+      }
+    }
+  },
+  "icons": {
+    "16": "images/icon.png",
+    "128": "images/icon.png"
+  },
+
+  "browser_action": {
+    "default_icon": {
+      "19": "images/icon.png",
+      "38": "images/icon.png"
+    },
+    "default_title": "Right Swipe.",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": [
+      "bg.js"
+    ],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+
+        "https://app.flux.market/*"
+
+      ],
+      "css":[
+        "css/cs.css"
+      ],
+      "js": [
+        "jquery-1.10.1.min.js",
+        "contentscript.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+  "permissions":["unlimitedStorage","storage","tabs"]
+  
+}
