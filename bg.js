@@ -3,22 +3,27 @@ const Flux = require ("flux-sdk");
 const nearAPI = require("near-api-js");
 const FLUXAKEY = 'fluxprotocol-phase-point-two_wallet_auth_key';
 
-(async () => {
+
+
 
 //let wallet = new nearApi.keyStores.BrowserLocalStorageKeyStore();
   window.flux = new Flux();
+  (async () => {
   await flux.connect("fluxprotocol-phase-point-two");
   console.log('working piece of shit',flux.isSignedIn());
-  const accId = flux.account.accountId;
+  localStorage['isSigned']=flux.isSignedIn();
+  })();
+  
   chrome.runtime.onMessage.addListener(function(res,sender,sendRes) {
     
     console.log(res,sender);
+    
     if(res.from == 'flux'){
       if(!(localStorage[FLUXAKEY]==res.fluxAKey)){
         localStorage[FLUXAKEY] = res.fluxAKey;
         localStorage['nearlib:keystore:'+JSON.parse(res.fluxAKey).accountId+':default'] = res.nlibKey;
-       
         
+        chrome.runtime.reload();
       }
     }else{
       console.log('create market');
@@ -30,17 +35,30 @@ const FLUXAKEY = 'fluxprotocol-phase-point-two_wallet_auth_key';
         1
       ).then((r)=>{
         var arr =[];
+        var opt = {
+          type: "basic",
+          title: "Market created",
+          message: "Market id is "+atob(r.status.SuccessValue),
+          iconUrl: "images/icon.png"
+        }
         if(localStorage['mktId']== null){
           arr.push(atob(r.status.SuccessValue));
           localStorage['mktId']= JSON.stringify(arr);
+          chrome.notifications.create(opt,function(){console.log(this);});
         }
         else{
+
           arr = JSON.parse(localStorage['mktId']);
           arr.push(atob(r.status.SuccessValue));
           localStorage['mktId']= JSON.stringify(arr);
+          chrome.notifications.create(opt,function(){console.log(this);});
         }
+        chrome.extension.sendMessage({refresh:true});
+        
+
       });
         console.log(newMarketId);
+        //chrome.extension.sendMessage({refresh:true});
     }
     /*chrome.windows.create({'url':"send.html",'type':'popup','width':360,'height':500},function(e){
       console.log(res.id,res.pic);
@@ -55,7 +73,7 @@ const FLUXAKEY = 'fluxprotocol-phase-point-two_wallet_auth_key';
       });*/
   
   });
-})();
+
 
 
 /* Init here */

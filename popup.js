@@ -21,6 +21,8 @@ create.addEventListener('click',function(c){
 });
 function init(){
         let flux_auth = localStorage['fluxprotocol-phase-point-two_wallet_auth_key'];
+        let sign = localStorage['isSigned'];
+        
         var mk;
         var an = "";
         if(localStorage['mktId'] != null){
@@ -31,7 +33,7 @@ function init(){
                 an = an +"<a target='_blank' href='https://app.flux.market/market/"+e+"'>"+e+"</a>";
             });}
         //var anc = "<a target=\'_blank\' href=\'https://app.flux.market/market/"+$()+"\'>$()</a>"
-		if(flux_auth){
+		if(sign=='true'){
             accId.innerText = JSON.parse(flux_auth).accountId;
             connectDiv.style.display ='none';
             biMark.style.display ='block';
@@ -43,3 +45,9 @@ function init(){
 
 }
 init();
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        console.log(request);
+        if(request.refresh)
+            init();
+    });
