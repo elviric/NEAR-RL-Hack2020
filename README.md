@@ -3,7 +3,8 @@
 # Introducing Flux-ext
 
 ## A standalone browser extension to create the binary market for flux.market
-
+# Demo
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/4ZIGrTTLuU0)
 # Installation.
 
 1. Download or clone this repo:
